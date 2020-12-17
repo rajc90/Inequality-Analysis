@@ -1,6 +1,6 @@
-source("analysis.R")
+source("tabPanelOne.R")
 
-library(shinydashboard)
+library(shiny)
 dashui <- dashboardPage(
   dashboardHeader(),
   dashboardSidebar(),
@@ -17,6 +17,24 @@ indicies_by_state <- tabPanel(
         label = "Choose state to analyze",
         choices = unique(data$State),
         selected = "Alabama"
+      ),
+      sliderInput(
+        inputId = "yearpt1_1",
+        label = "Select Year Range",
+        min = min(data$Year),
+        max = max(data$Year),
+        sep = "",
+        value = max(data$Year),
+        round = TRUE
+      ),
+      radioButtons(
+        inputId = "index_typep1_1",
+        "Choose Index:",
+        choices = c(
+          "Theil" = "Theil",
+          "Gini" = "Gini",
+          "Atkin" = "Atkin05"
+        )
       )
     ),
     mainPanel(

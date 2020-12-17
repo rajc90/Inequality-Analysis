@@ -3,13 +3,14 @@ library(reshape2)
 library(ggplot2)
 library(plotly)
 data <- read.csv("inequality_data.csv") %>%
-  rename("Year" = "Ã¯..Year")
+  rename("Year" = "ï..Year")
 ## This is panel 1 part 1
 what_state <- c("Washington")
+what_year_state <- c()
 by_state <- data %>%
   filter(st != 0) %>%
   group_by(State) %>%
-  filter(State %in% what_state) 
+  filter(State %in% what_state)
 
 by_state_plot <- ggplot(by_state, aes(Year), label = "Index") +
   geom_line(aes(y = Atkin05, color = "Atkin05")) +
@@ -19,3 +20,7 @@ by_state_plot <- ggplot(by_state, aes(Year), label = "Index") +
 ggplotly(by_state_plot)
 
 ## Panel 1 part 2
+by_nation <- data %>%
+  filter(st == 0) %>%
+  filter(Year %in% c(2000:2013))
+colnames(data)
