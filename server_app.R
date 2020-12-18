@@ -23,6 +23,18 @@ server <- function(input, output){
       geom_line(aes(color = Index)) +
       ylab("")
     ggplotly(by_state_plot)
+  })
+    output$nation_ineqality <- renderPlotly({
+      by_nation <- data %>%
+        filter(st == 0) %>%
+        gather(-Year, -State, -st, -RMeanDev, key = "Index", value = "Value") %>%
+        filter(Index %in% c(input$index_typep1_2))
+      
+      
+      nation_plot <- ggplot(by_nation, aes(x = Year, y = Value)) +
+        geom_line(aes(color = Index)) +
+        ylab("")
+      ggplotly(nation_plot)
 
   })
 }
