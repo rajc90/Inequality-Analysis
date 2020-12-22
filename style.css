@@ -1,19 +1,21 @@
 #website_title {
   font-family: "Century Gothic";
   font-weight: bold;
-  font-size: 21px;
+  font-size: 30px;
+  padding-bottom: 5px;
+  text-align: center;
 }
 
 #panel_one_body {
-  background-color: orange;
+  background-color: #f1f6f9;
 }
 body {
-  background-color: orange;
+  background-color: #f1f6f9;
 }
 
 #headers {
   font-family: "Segoe UI";
   font-size: 18px;
-  font-color: white;
+  color: #14274e;
 }
 
