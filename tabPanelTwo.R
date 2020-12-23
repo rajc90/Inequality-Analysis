@@ -7,14 +7,53 @@ data <- read.csv("inequality_data.csv") %>%
 usa_data <- data %>%
   filter(st == 0) %>%
   filter(Year > 2000)
-output$nation_ineqality <- renderPlotly({
-  by_nation <- data %>%
-    filter(st == 0) %>%
-    gather(-Year, -State, -st, -RMeanDev, key = "Index", value = "Value") %>%
-    filter(Index %in% c(input$index_typep1_2))
-  
-  
-  nation_plot <- ggplot(by_nation, aes(x = Year, y = Value)) +
-    geom_line(aes(color = Index)) +
-    ylab("")
-  ggplotly(nation_plot)
+
+national_inquality_analysis <- tabPanel(
+  "National Analysis",
+  # Styles the navbar text
+  tags$style(
+    ".navbar-nav li a {
+        font-size: 20px;
+        font-weight: bold;
+        font-color: #f1f6f9;
+      }
+    "
+  ),
+  tags$body(
+    h1(
+      id = "headers",
+      "Tracking Inequality Indicies of the USA"
+    ),
+    sidebarLayout(
+      sidebarPanel(
+        #Choose the start year for analysis
+        selectInput(
+          inputId = "startyear2_1",
+          label = "Choose start year",
+          choices = unique(data$Year),
+          selected = "1930"
+        ),
+        #Choose the end year for analysis
+        selectInput(
+          inputId = "endyear2_1",
+          label = "Choose start year",
+          choices = unique(data$Year),
+          selected = "2015"
+        ),
+        #Choose the index to be analyzed
+        checkboxGroupInput(
+          inputId = "index_typep2_1",
+          "Choose Index:",
+          choices = c(
+            "Theil" = "Theil",
+            "Gini" = "Gini",
+            "Atkin" = "Atkin05"),
+          selected = c("Theil")
+        )
+      ),
+      mainPanel(
+        plotlyOutput("nation_ineqality", width = "100%")
+      ),
+    ),
+  )
+)

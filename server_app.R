@@ -50,16 +50,19 @@ server <- function(input, output){
   
 ##Page two of the UI 
     output$nation_ineqality <- renderPlotly({
-      by_nation <- data %>%
-        filter(st == 0) %>%
-        gather(-Year, -State, -st, -RMeanDev, key = "Index", value = "Value") %>%
-        filter(Index %in% c(input$index_typep1_2))
-      
-      
-      nation_plot <- ggplot(by_nation, aes(x = Year, y = Value)) +
-        geom_line(aes(color = Index)) +
-        ylab("")
-      ggplotly(nation_plot)
+        by_nation <- data %>%
+          filter(st == 0) %>%
+          gather(-Year, -State, -st, -RMeanDev,
+                 key = "Index", value = "Value") %>%
+          filter(Index %in% c(input$index_typep2_1)) %>%
+          filter(Year %in% c(input$startyear2_1:input$endyear2_1))
+        
+        
+        nation_plot <- ggplot(by_nation, aes(x = Year, y = Value)) +
+          geom_line(aes(color = Index)) + 
+          ggtitle(paste("USA Inequality Analysis between", input$startyear2_1,
+                        "&", input$endyear2_1)) + ylab("")
+        ggplotly(nation_plot)
 
   })
 }

@@ -4,7 +4,7 @@ library(shiny)
 
 
 indicies_by_state
-
+national_inquality_analysis
 
 
 
@@ -16,6 +16,7 @@ navui <- fluidPage(
   ),
   navbarPage(
   "Analysis",
-  indicies_by_state
+  indicies_by_state,
+  national_inquality_analysis
   )
 )
