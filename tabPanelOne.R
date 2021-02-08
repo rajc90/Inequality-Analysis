@@ -3,6 +3,7 @@ library(reshape2)
 library(ggplot2)
 library(plotly)
 library(tidyr)
+library(shiny)
 
 #The data needs to be filtered because of the year column in the data
 data <- read.csv("inequality_data.csv") %>%
@@ -12,14 +13,6 @@ data <- read.csv("inequality_data.csv") %>%
 indicies_by_state <- tabPanel(
   "Inequality By State",
   # This is to style the font in the navbar
-  tags$style(
-    ".navbar-nav li a {
-        font-size: 20px;
-        font-weight: bold;
-        font-color: #f1f6f9;
-      }
-    "
-  ),
   tags$body(
     h1(
       id = "headers",

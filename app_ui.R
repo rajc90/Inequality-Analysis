@@ -1,10 +1,10 @@
 source("tabPanelOne.R")
-
+source("tabPanelTwo.R")
+source("introTab.R")
 library(shiny)
 
 
-indicies_by_state
-national_inquality_analysis
+
 
 
 
@@ -16,6 +16,7 @@ navui <- fluidPage(
   ),
   navbarPage(
   "Analysis",
+  intro,
   indicies_by_state,
   national_inquality_analysis
   )

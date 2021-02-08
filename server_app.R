@@ -4,9 +4,7 @@ library(ggplot2)
 library(plotly)
 library(tidyr)
 data <- read.csv("inequality_data.csv") %>%
-  rename("Year" = "Ã¯..Year")
-
-
+  rename("Year" = "ï..Year")
 
 server <- function(input, output){
 ##Page one of the UI
@@ -25,6 +23,7 @@ server <- function(input, output){
 
     by_state_plot <- ggplot(by_state, aes(x = Year, y = Value)) +
       geom_line(aes(color = Index)) +
+      geom_point() +
       ylab("")
     ggplotly(by_state_plot)
   })
@@ -48,7 +47,8 @@ server <- function(input, output){
     ggplotly(plot_2)
   })
   
-##Page two of the UI 
+##Page two of the UI
+  ## USA Inequality
     output$nation_ineqality <- renderPlotly({
         by_nation <- data %>%
           filter(st == 0) %>%
@@ -59,10 +59,23 @@ server <- function(input, output){
         
         
         nation_plot <- ggplot(by_nation, aes(x = Year, y = Value)) +
-          geom_line(aes(color = Index)) + 
+          geom_line(aes(color = Index)) +
+          geom_point() + 
           ggtitle(paste("USA Inequality Analysis between", input$startyear2_1,
                         "&", input$endyear2_1)) + ylab("")
         ggplotly(nation_plot)
-
   })
+    ## USA GDP
+    output$nation_GDP <- renderPlotly({
+      gdp <- read.csv("GDP.csv") %>%
+        rename("Year" = "ï..Year") %>%
+        gather(key = "Type", value = "GDP", -Year)%>%
+        filter(Year %in% c(input$startyear2_2:input$endyear2_2))
+      
+      gdp_plot <- gdp_plot <- ggplot(data = gdp, aes(x=Year, y=GDP)) +
+        geom_line()+
+        geom_point() +
+        ylab("GDP (in Trillions)")
+      ggplotly(gdp_plot)
+    })
 }

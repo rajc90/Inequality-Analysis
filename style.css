@@ -19,3 +19,31 @@ body {
   color: #14274e;
 }
 
+.navbar-nav li a {
+        font-size: 20px;
+        font-weight: bold;
+        font-color: #f1f6f9;
+      }
+      
+/* These id's are for the introTab.R  */
+#TheilHeader {
+  text-align: center;
+  font-family: "Segoe UI";
+  font-size: 100px;
+  color: #14274e;
+}
+#TheilHeader {
+  font-family: "Segoe UI";
+  font-size: 18px;
+  color: #14274e;
+}
+#GiniHeader {
+  font-family: "Segoe UI";
+  font-size: 18px;
+  color: #14274e;
+}
+#AtkinHeader {
+  font-family: "Segoe UI";
+  font-size: 18px;
+  color: #14274e;
+}
