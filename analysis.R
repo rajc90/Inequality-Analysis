@@ -41,5 +41,15 @@ filter(st == 0) %>%
   gather(-Year, -State, -st, -RMeanDev, key = "Index", value = "Value") %>%
   filter(Year %in% c(2000:2013))
 colnames(data)
+
+
+
+
+
+
+data %>%
+  filter(Year == 2007) %>%
+  arrange(desc(Gini)) %>%
+  top_n(1)
   
   

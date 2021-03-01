@@ -27,23 +27,20 @@ body {
       
 /* These id's are for the introTab.R  */
 #TheilHeader {
-  text-align: center;
   font-family: "Segoe UI";
-  font-size: 100px;
+  font-size: 30px;
   color: #14274e;
-}
-#TheilHeader {
-  font-family: "Segoe UI";
-  font-size: 18px;
-  color: #14274e;
+  font-weight: bold;
 }
 #GiniHeader {
   font-family: "Segoe UI";
-  font-size: 18px;
+  font-size: 30px;
   color: #14274e;
+  font-weight: bold;
 }
 #AtkinHeader {
   font-family: "Segoe UI";
-  font-size: 18px;
+  font-size: 30px;
   color: #14274e;
+  font-weight: bold;
 }

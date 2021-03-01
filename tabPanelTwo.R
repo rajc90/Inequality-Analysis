@@ -45,25 +45,6 @@ national_inquality_analysis <- tabPanel(
           choices = unique(data$Year),
           selected = "2015"
         ),
-      ),
-      mainPanel(),
-    ),
-    sidebarLayout(
-      sidebarPanel(
-        #Choose the start year for analysis
-        selectInput(
-          inputId = "startyear2_1",
-          label = "Choose start year",
-          choices = unique(data$Year),
-          selected = "1930"
-        ),
-        #Choose the end year for analysis
-        selectInput(
-          inputId = "endyear2_1",
-          label = "Choose start year",
-          choices = unique(data$Year),
-          selected = "2015"
-        ),
         #Choose the index to be analyzed
         checkboxGroupInput(
           inputId = "index_typep2_1",

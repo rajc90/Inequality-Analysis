@@ -15,9 +15,9 @@ navui <- fluidPage(
     "Analysis of Inequality Indicies in the USA, 1929 - 2015"
   ),
   navbarPage(
-  "Analysis",
+  "",
   intro,
-  indicies_by_state,
-  national_inquality_analysis
+  national_inquality_analysis,
+  indicies_by_state
   )
 )

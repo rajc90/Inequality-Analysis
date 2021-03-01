@@ -23,7 +23,6 @@ server <- function(input, output){
 
     by_state_plot <- ggplot(by_state, aes(x = Year, y = Value)) +
       geom_line(aes(color = Index)) +
-      geom_point() +
       ylab("")
     ggplotly(by_state_plot)
   })
@@ -60,7 +59,6 @@ server <- function(input, output){
         
         nation_plot <- ggplot(by_nation, aes(x = Year, y = Value)) +
           geom_line(aes(color = Index)) +
-          geom_point() + 
           ggtitle(paste("USA Inequality Analysis between", input$startyear2_1,
                         "&", input$endyear2_1)) + ylab("")
         ggplotly(nation_plot)
@@ -73,9 +71,10 @@ server <- function(input, output){
         filter(Year %in% c(input$startyear2_2:input$endyear2_2))
       
       gdp_plot <- gdp_plot <- ggplot(data = gdp, aes(x=Year, y=GDP)) +
-        geom_line()+
-        geom_point() +
-        ylab("GDP (in Trillions)")
+        geom_line() +
+        ylab("GDP (in Trillions)") + 
+        ggtitle(paste("USA GDP between", input$startyear2_2,
+                      "&", input$endyear2_2))
       ggplotly(gdp_plot)
     })
 }
