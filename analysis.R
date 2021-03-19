@@ -47,9 +47,11 @@ colnames(data)
 
 
 
-data %>%
+bar <- data %>%
   filter(Year == 2007) %>%
   arrange(desc(Gini)) %>%
-  top_n(1)
-  
+  top_n(10) %>%
+  select(State, Gini)
+ggplotly(ggplot(bar, aes(reorder(State,-Gini), Gini)) + 
+  geom_bar(stat="identity", color="#00BFFF", fill="#87CEFA", width = 0.5))
   

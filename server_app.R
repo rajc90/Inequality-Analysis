@@ -26,6 +26,23 @@ server <- function(input, output){
       ylab("")
     ggplotly(by_state_plot)
   })
+  
+  
+  output$worst_states <- renderDataTable({
+    index <- input$chosenIndex
+    year <- input$chosenYear
+    table <- data %>%
+      filter(Year == year) %>%
+      arrange(desc(index)) %>%
+      select(State, input$chosenIndex) %>%
+      top_n(10)
+    
+    table
+  })
+  
+  
+  
+  
   output$state_comparison <- renderPlotly({
     
     a <- input$startyear1_2

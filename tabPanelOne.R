@@ -98,6 +98,36 @@ indicies_by_state <- tabPanel(
         plotlyOutput("state_comparison")
       )
     )
+  ),
+  tags$body(
+    h1(
+      id = "headers",
+      "Top States by Inequality"
+    ),
+    sidebarLayout(
+      sidebarPanel(
+        # Input to choose the year for analysis
+        selectInput(
+          inputId = "chosenYear",
+          label = "Choose start year",
+          choices = unique(data$Year),
+          selected = "1930"
+        ),
+        # Allows the user to choose which index is displayed
+        selectInput(
+          inputId = "chosenIndex",
+          "Choose Index:",
+          choices = c(
+            "Theil" = "Theil",
+            "Gini" = "Gini",
+            "Atkin" = "Atkin05"),
+          selected = c("Gini")
+        )
+      ),
+      mainPanel(
+        dataTableOutput("worst_states")
+      ),
+    ),
   )
 )
 

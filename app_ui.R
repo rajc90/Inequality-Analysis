@@ -8,7 +8,7 @@ library(shiny)
 
 
 
-navui <- fluidPage(
+ui <- fluidPage(
   includeCSS("style.css"),
   tags$h1(
     id = "website_title",
@@ -18,6 +18,6 @@ navui <- fluidPage(
   "",
   intro,
   national_inquality_analysis,
-  indicies_by_state
+  indicies_by_state 
   )
 )
